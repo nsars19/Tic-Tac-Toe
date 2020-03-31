@@ -12,11 +12,13 @@ class Cell
 end
 
 class Player
-  def initialize number
-    @player_number = number
+  attr_accessor :name
+
+  def initialize name
+    @name = name
   end
 
   def choose_cell num 
-    Cell.new(num, @player_number)
+    Cell.new(num, @name)
   end
 end
