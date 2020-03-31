@@ -42,7 +42,7 @@ def run
   puts "----------"
   puts "7 | 8 | 9 \n\n"
 
-  choice_proc = Proc.new do |name, response|
+  choice_proc = Proc.new do |name|
     good_response = false
     
     until good_response == true
