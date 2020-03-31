@@ -34,8 +34,8 @@ def run
   puts "Player 2! How about your name?"
   $player2 = Player.new gets.chomp
   puts "Excellence. Let's get started then!"
-  puts "You must choose a number as your selection. Each number corresponds with"
-  puts "a spot on the grid, as so:\n\n"
+  puts "You must choose a number for your selection. Each number corresponds with"
+  puts "a spot on the grid, like so:\n\n"
   puts "1 | 2 | 3 "
   puts "----------"
   puts "4 | 5 | 6 "
