@@ -3,6 +3,9 @@ module Classes
     attr_accessor :grid
     
     def initialize
+      @rows = []
+      @columns = []
+      @diagonals = []
       @grid = [
                 [" ", " ", " "],
                 [" ", " ", " "],
@@ -16,9 +19,6 @@ module Classes
     end
 
     def check_results
-      @rows = []
-      @columns = []
-      @diagonals = []
       # Populates array with row contents as strings
       3.times do |i|
         @rows << self.grid[i].join
