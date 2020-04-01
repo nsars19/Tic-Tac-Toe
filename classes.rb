@@ -16,12 +16,12 @@ module Classes
     end
 
     def check_results
-      rows = []
-      columns = []
-      diagonals = []
+      @rows = []
+      @columns = []
+      @diagonals = []
       # Populates array with row contents as strings
       3.times do |i|
-        rows << self.grid[i].join
+        @rows << self.grid[i].join
       end
       # Populates array with column contents as strings
       3.times do |i|
@@ -29,15 +29,15 @@ module Classes
         3.times do |j|
           col_temp << self.grid[j][i]
         end
-        columns << col_temp.join
+        @columns << col_temp.join
       end
       # Populates array with diagonal contents as strings
       diag_temp = []
       3.times do |i|
         diag_temp << self.grid[i][i]
       end
-      diagonals << diag_temp.join
-      diagonals << "#{self.grid[0][2]}#{self.grid[1][1]}#{self.grid[2][0]}"
+      @diagonals << diag_temp.join
+      @diagonals << "#{self.grid[0][2]}#{self.grid[1][1]}#{self.grid[2][0]}"
     end
   end
 
