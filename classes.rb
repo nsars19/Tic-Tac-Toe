@@ -41,6 +41,7 @@ module Classes
       return true if @columns == "XXX" || @columns == "OOO"
       return true if @diagonals == "XXX" || @diagonals == "OOO"
       return true if Cell.count == 9
+      false
     end
   end
 
