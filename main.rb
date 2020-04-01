@@ -33,7 +33,7 @@ def run
   puts "Great!"
   puts "Player 2! How about your name?"
   $player2 = Player.new gets.chomp
-  puts "Excellence. Let's get started then!"
+  puts "Excellent. Let's get started then!"
   puts "You must choose a number for your selection. Each number corresponds with"
   puts "a spot on the grid, like so:\n\n"
   puts "1 | 2 | 3 "
