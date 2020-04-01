@@ -14,10 +14,6 @@ module Classes
     end
 
     private
-    def over?
-      
-    end
-
     def check_results
       # Populates array with row contents as strings
       3.times do |i|
@@ -39,18 +35,31 @@ module Classes
       @diagonals << diag_temp.join
       @diagonals << "#{self.grid[0][2]}#{self.grid[1][1]}#{self.grid[2][0]}"
     end
+
+    def over?
+      return true if @rows == "XXX" || @rows == "OOO"
+      return true if @columns == "XXX" || @columns == "OOO"
+      return true if @diagonals == "XXX" || @diagonals == "OOO"
+      return true if Cell.count == 9
+    end
   end
 
   class Cell
     @@chosen_cells = {}
+    @@count = 0
 
     def initialize number, player
       @number = number
       @@chosen_cells[number] = player
+      @@count += 1
     end
 
     def self.chosen_cells
       @@chosen_cells
+    end
+
+    def self.count
+      @@count
     end
   end
 
