@@ -1,7 +1,7 @@
 require './classes.rb'
 
 def over?
-  cell = Cell.chosen_cells
+  cell = Classes::Cell.chosen_cells
   # Horizontal win conditions
   return true if cell[1] == $player1 && cell[2] == $player1 && cell[3] == $player1
   return true if cell[1] == $player2 && cell[2] == $player2 && cell[3] == $player2
@@ -29,10 +29,10 @@ end
 def run
   puts "Welcome to Tic Tac Toe!!"
   puts "Player 1!! What's your name?"
-  $player1 = Player.new gets.chomp
+  $player1 = Classes::Player.new gets.chomp
   puts "Great!"
   puts "Player 2! How about your name?"
-  $player2 = Player.new gets.chomp
+  $player2 = Classes::Player.new gets.chomp
   puts "Excellent. Let's get started then!"
   puts "You must choose a number for your selection. Each number corresponds with"
   puts "a spot on the grid, like so:\n\n"
