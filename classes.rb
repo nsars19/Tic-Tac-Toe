@@ -67,28 +67,11 @@ module Classes
       @@count += 1
     end
 
-    def self.chosen_cells
-      @@chosen_cells
-    end
-
     def self.count
       @@count
     end
   end
 
   class Player
-    attr_reader :name
-
-    def initialize name
-      @name = name
-    end
-
-    def choose_cell num 
-      case num
-      when 1 || 2 || 3
-        Cell.new
-        
-      end
-    end
   end
 end
