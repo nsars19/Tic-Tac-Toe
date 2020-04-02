@@ -33,6 +33,16 @@ module Classes
       puts "#{cell[2][0]} | #{cell[2][1]} | #{cell[2][2]}\n\n"
     end
 
+    def choose_cell choice, marker
+      options = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+      idx = []
+      options.each_with_index do |e, i|
+        idx = [i, e.index(choice)] if e.include?(choice)
+      end
+      self.grid[idx[0]][idx[1]] = marker
+      Cell.new
+    end
+
     private
     def check_if_win
       @rows = []
