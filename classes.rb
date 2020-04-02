@@ -10,7 +10,7 @@ module Classes
                 [" ", " ", " "],
                 [" ", " ", " "],
                 [" ", " ", " "]
-      ]
+              ]
     end
 
     def over?
