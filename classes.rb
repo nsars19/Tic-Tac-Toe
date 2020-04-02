@@ -30,7 +30,7 @@ module Classes
       puts "----------"
       puts "#{cell[1][0]} | #{cell[1][1]} | #{cell[1][2]}"
       puts "----------"
-      puts "#{cell[2][0]} | #{cell[2][1]} | #{cell[2][2]}"
+      puts "#{cell[2][0]} | #{cell[2][1]} | #{cell[2][2]}\n\n"
     end
 
     private
