@@ -105,17 +105,18 @@ def run
       end
     end
   end
-  until game.over?
-    puts "Player 1's choice:"
-    choice = gets.chomp.to_i
-    cell_picker.call(choice, "X")
-    game.display_board
-    break if game.over?
 
-    puts "Player 2's choice:"
-    choice = gets.chomp.to_i 
-    cell_picker.call(choice, "O")
+  run_game = Proc.new do |player_num, x_or_o|
+    puts "Player #{player_num}'s choice:"
+    choice = gets.chomp.to_i
+    cell_picker.call(choice, x_or_o)
     game.display_board
+  end
+
+  until game.over?
+    run_game.call(1, "X")
+    break if game.over?
+    run_game.call(2, "O")
     break if game.over?
   end
 end
