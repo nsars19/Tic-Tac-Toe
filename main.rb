@@ -1,5 +1,3 @@
-
-
 require './classes.rb'
 
 def run
