@@ -14,102 +14,10 @@ def run
   player2 = Classes::Player.new 
   game = Classes::Board.new
 
-  cell_picker = Proc.new do |choice, x_or_o|
-    good_response = false
-    until good_response
-      case choice
-      when 1
-        if game.grid[0][0] == " "
-          Classes::Cell.new
-          game.grid[0][0] = x_or_o
-          good_response = true
-        else
-          puts "Please select an empty space!"
-          choice = gets.chomp.to_i
-        end
-      when 2
-        if game.grid[0][1] == " "
-          Classes::Cell.new
-          game.grid[0][1] = x_or_o
-          good_response = true
-        else
-          puts "Please select an empty space!"
-          choice = gets.chomp.to_i
-        end
-      when 3
-        if game.grid[0][2] == " "
-          Classes::Cell.new
-          game.grid[0][2] = x_or_o
-          good_response = true
-        else
-          puts "Please select an empty space!"
-          choice = gets.chomp.to_i
-        end
-      when 4
-        if game.grid[1][0] == " "
-          Classes::Cell.new
-          game.grid[1][0] = x_or_o
-          good_response = true
-        else
-          puts "Please select an empty space!"
-          choice = gets.chomp.to_i
-        end
-      when 5
-        if game.grid[1][1] == " "
-          Classes::Cell.new
-          game.grid[1][1] = x_or_o
-          good_response = true
-        else
-          puts "Please select an empty space!"
-          choice = gets.chomp.to_i
-        end
-      when 6
-        if game.grid[1][2] == " "
-          Classes::Cell.new
-          game.grid[1][2] = x_or_o
-          good_response = true
-        else
-          puts "Please select an empty space!"
-          choice = gets.chomp.to_i
-        end
-      when 7
-        if game.grid[2][0] == " "
-          Classes::Cell.new
-          game.grid[2][0] = x_or_o
-          good_response = true
-        else
-          puts "Please select an empty space!"
-          choice = gets.chomp.to_i
-        end
-      when 8
-        if game.grid[2][1] == " "
-          Classes::Cell.new
-          game.grid[2][1] = x_or_o
-          good_response = true
-        else
-          puts "Please select an empty space!"
-          choice = gets.chomp.to_i
-        end
-      when 9
-        if game.grid[2][2] == " "
-          Classes::Cell.new
-          game.grid[2][2] = x_or_o
-          good_response = true
-        else
-          puts "Please select an empty space!"
-          choice = gets.chomp.to_i
-        end
-      else
-        puts "Please pick a number from 1 to 9"
-        choice = gets.chomp.to_i
-      end
-    end
-  end
-
-  run_game = Proc.new do |player_num, x_or_o|
+  run_game = Proc.new do |player_num, marker|
     puts "Player #{player_num}'s choice:"
     choice = gets.chomp.to_i
-    cell_picker.call(choice, x_or_o)
+    game.choose_cell(choice, marker)
     game.display_board
   end
 
