@@ -15,10 +15,10 @@ module Classes
 
     def over?
       check_if_win
-      3.times do |i|
-        return true if @rows[i]      == "XXX" || @rows[i]      == "OOO"
-        return true if @columns[i]   == "XXX" || @columns[i]   == "OOO"
-        return true if @diagonals[i] == "XXX" || @diagonals[i] == "OOO"
+      [@rows, @columns, @diagonals].each do |e|
+        for item in e
+          return true if item == "XXX" || item == "OOO"
+        end
       end
       return true if Cell.count == 9
       false
@@ -92,4 +92,3 @@ module Classes
     end
   end
 end
-
