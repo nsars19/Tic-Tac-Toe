@@ -1,39 +1,9 @@
+
+
 require './classes.rb'
 
-def over?
-  cell = Classes::Cell.chosen_cells
-  # Horizontal win conditions
-  return true if cell[1] == $player1 && cell[2] == $player1 && cell[3] == $player1
-  return true if cell[1] == $player2 && cell[2] == $player2 && cell[3] == $player2
-  return true if cell[4] == $player1 && cell[5] == $player1 && cell[6] == $player1
-  return true if cell[4] == $player2 && cell[5] == $player2 && cell[6] == $player2
-  return true if cell[7] == $player1 && cell[8] == $player1 && cell[9] == $player1
-  return true if cell[7] == $player2 && cell[8] == $player2 && cell[9] == $player2
-  # Vertical win conditions
-  return true if cell[1] == $player1 && cell[4] == $player1 && cell[7] == $player1
-  return true if cell[1] == $player2 && cell[4] == $player2 && cell[7] == $player2
-  return true if cell[2] == $player1 && cell[5] == $player1 && cell[8] == $player1
-  return true if cell[2] == $player2 && cell[5] == $player2 && cell[8] == $player2
-  return true if cell[3] == $player1 && cell[6] == $player1 && cell[9] == $player1
-  return true if cell[3] == $player2 && cell[6] == $player2 && cell[9] == $player2
-  # Diagonal win conditions
-  return true if cell[1] == $player1 && cell[5] == $player1 && cell[9] == $player1
-  return true if cell[1] == $player2 && cell[5] == $player2 && cell[9] == $player2
-  return true if cell[3] == $player1 && cell[5] == $player1 && cell[7] == $player1
-  return true if cell[3] == $player2 && cell[5] == $player2 && cell[7] == $player2
-  # Draw condition
-  return true if cell.length == 9
-  false
-end
-
 def run
-  puts "Welcome to Tic Tac Toe!!"
-  puts "Player 1!! What's your name?"
-  $player1 = Classes::Player.new gets.chomp
-  puts "Great!"
-  puts "Player 2! How about your name?"
-  $player2 = Classes::Player.new gets.chomp
-  puts "Excellent. Let's get started then!"
+  puts "Welcome to Tic Tac Toe!!\n"
   puts "You must choose a number for your selection. Each number corresponds with"
   puts "a spot on the grid, like so:\n\n"
   puts "1 | 2 | 3 "
@@ -41,53 +11,115 @@ def run
   puts "4 | 5 | 6 "
   puts "----------"
   puts "7 | 8 | 9 \n\n"
+  
+  player1 = Classes::Player.new 
+  player2 = Classes::Player.new 
+  game = Classes::Board.new
 
-  choice_proc = Proc.new do |name|
+  cell_picker = Proc.new do |choice, x_or_o|
     good_response = false
-    
-    until good_response == true
-      response = gets.chomp.to_i
-      case response
+    until good_response
+      case choice
       when 1
-        name.choose_cell 1
-        good_response = true
+        if game.grid[0][0] == " "
+          Classes::Cell.new
+          game.grid[0][0] = x_or_o
+          good_response = true
+        else
+          puts "Please select an empty space!"
+          choice = gets.chomp.to_i
+        end
       when 2
-        name.choose_cell 2
-        good_response = true
+        if game.grid[0][1] == " "
+          Classes::Cell.new
+          game.grid[0][1] = x_or_o
+          good_response = true
+        else
+          puts "Please select an empty space!"
+          choice = gets.chomp.to_i
+        end
       when 3
-        name.choose_cell 3
-        good_response = true
+        if game.grid[0][2] == " "
+          Classes::Cell.new
+          game.grid[0][2] = x_or_o
+          good_response = true
+        else
+          puts "Please select an empty space!"
+          choice = gets.chomp.to_i
+        end
       when 4
-        name.choose_cell 4  
-        good_response = true
+        if game.grid[1][0] == " "
+          Classes::Cell.new
+          game.grid[1][0] = x_or_o
+          good_response = true
+        else
+          puts "Please select an empty space!"
+          choice = gets.chomp.to_i
+        end
       when 5
-        name.choose_cell 5
-        good_response = true
+        if game.grid[1][1] == " "
+          Classes::Cell.new
+          game.grid[1][1] = x_or_o
+          good_response = true
+        else
+          puts "Please select an empty space!"
+          choice = gets.chomp.to_i
+        end
       when 6
-        name.choose_cell 6
-        good_response = true
+        if game.grid[1][2] == " "
+          Classes::Cell.new
+          game.grid[1][2] = x_or_o
+          good_response = true
+        else
+          puts "Please select an empty space!"
+          choice = gets.chomp.to_i
+        end
       when 7
-        name.choose_cell 7
-        good_response = true
-      when 8 
-        name.choose_cell 8
-        good_response = true
+        if game.grid[2][0] == " "
+          Classes::Cell.new
+          game.grid[2][0] = x_or_o
+          good_response = true
+        else
+          puts "Please select an empty space!"
+          choice = gets.chomp.to_i
+        end
+      when 8
+        if game.grid[2][1] == " "
+          Classes::Cell.new
+          game.grid[2][1] = x_or_o
+          good_response = true
+        else
+          puts "Please select an empty space!"
+          choice = gets.chomp.to_i
+        end
       when 9
-        name.choose_cell 9
-        good_response = true
+        if game.grid[2][2] == " "
+          Classes::Cell.new
+          game.grid[2][2] = x_or_o
+          good_response = true
+        else
+          puts "Please select an empty space!"
+          choice = gets.chomp.to_i
+        end
       else
-        puts "Please choose a number between 1 and 9"
+        puts "Please pick a number from 1 to 9"
+        choice = gets.chomp.to_i
       end
     end
   end
+  until game.over?
+    puts "Player 1's choice:"
+    choice = gets.chomp.to_i
+    cell_picker.call(choice, "X")
+    game.display_board
+    break if game.over?
 
-  until over?
-    puts "Player 1's choice: "
-    choice_proc.call($player1)
-    puts "Player 2's choice: "
-    choice_proc.call($player2)    
+    puts "Player 2's choice:"
+    choice = gets.chomp.to_i 
+    cell_picker.call(choice, "O")
+    game.display_board
+    break if game.over?
   end
 end
 
 run
-
