@@ -17,7 +17,16 @@ def run
   run_game = Proc.new do |player_num, marker|
     puts "Player #{player_num}'s choice:"
     choice = gets.chomp.to_i
-    game.choose_cell(choice, marker)
+    good_answer = false
+    until good_answer
+      if choice > 0 && choice <= 9
+        game.choose_cell(choice, marker)
+        good_answer = true
+      else
+        puts "Choose a number between 1 and 9"
+        choice = gets.chomp.to_i
+      end
+    end
     game.display_board
   end
 
