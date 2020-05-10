@@ -31,5 +31,21 @@ describe "Board" do
         expect(game.over?).to eql true
       end
     end
+
+    it "ends when board is full" do
+      9.times { Cell.new }
+      expect(game.over?).to eql true
+    end
+  end
+
+  describe "#choose_cell" do
+    it "should change from ' ' to 'X' or 'O'" do
+      expect { game.choose_cell(3, 'X') }.to change { game.grid[0][2] }.from(' ').to('X')
+    end
+
+    xit "should not allow a previously chosen space to be selected" do
+      game.grid[0][0] = 'X'
+      expect { game.choose_cell(1, 'O') }.not_to change { game.grid[0][0] }
+    end
   end
 end
