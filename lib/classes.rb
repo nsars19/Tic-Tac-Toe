@@ -38,11 +38,21 @@ class Board
     options.each_with_index do |e, i|
       idx = [i, e.index(choice)] if e.include?(choice)
     end
+    return make_new_choice(marker) if self.grid[idx[0]][idx[1]] != " "
     self.grid[idx[0]][idx[1]] = marker
     Cell.new
   end
 
   private
+  def make_new_choice marker
+    puts "Please select a spot that hasn't been chosen"
+    choice = gets.chomp.to_i
+    until choice > 0 && choice <= 9 
+      choice = gets.chomp.to_i
+    end
+    choose_cell(choice, marker)
+  end
+
   def get_board
     @rows = []
     @columns = []
