@@ -10,9 +10,9 @@ def run
   puts "----------"
   puts "7 | 8 | 9 \n\n"
   
-  player1 = Classes::Player.new 
-  player2 = Classes::Player.new 
-  game = Classes::Board.new
+  player1 = Player.new 
+  player2 = Player.new 
+  game = Board.new
 
   run_game = Proc.new do |player_num, marker|
     puts "Player #{player_num}'s choice:"
