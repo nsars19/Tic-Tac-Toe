@@ -125,5 +125,3 @@ end
 
 class Player
 end
-
-Board.run
