@@ -1,4 +1,4 @@
-require './classes.rb'
+require './lib/classes.rb'
 
 def run
   puts "Welcome to Tic Tac Toe!!\n"
