@@ -99,14 +99,14 @@ class Board
     3.times { |i| @rows << self.grid[i].join }
     # Populates array with column contents as strings
     3.times do |i|
-      col_temp = []
-      3.times { |j| col_temp << self.grid[j][i] }
-      @columns << col_temp.join
+      column_contents = []
+      3.times { |j| column_contents << self.grid[j][i] }
+      @columns << column_contents.join
     end
     # Populates array with diagonal contents as strings
-    diag_temp = []
-    3.times { |i| diag_temp << self.grid[i][i] }
-    @diagonals << diag_temp.join
+    diagonal_contents = []
+    3.times { |i| diagonal_contents << self.grid[i][i] }
+    @diagonals << diagonal_contents.join
     @diagonals << "#{self.grid[0][2]}#{self.grid[1][1]}#{self.grid[2][0]}"
   end
 end
