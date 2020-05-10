@@ -13,7 +13,7 @@ class Board
   end
 
   def over?
-    check_if_win
+    get_board
     [@rows, @columns, @diagonals].each do |e|
       for item in e
         return true if item == "XXX" || item == "OOO"
@@ -43,27 +43,21 @@ class Board
   end
 
   private
-  def check_if_win
+  def get_board
     @rows = []
     @columns = []
     @diagonals = []
     # Populates array with row contents as strings
-    3.times do |i|
-      @rows << self.grid[i].join
-    end
+    3.times { |i| @rows << self.grid[i].join }
     # Populates array with column contents as strings
     3.times do |i|
       col_temp = []
-      3.times do |j|
-        col_temp << self.grid[j][i]
-      end
+      3.times { |j| col_temp << self.grid[j][i] }
       @columns << col_temp.join
     end
     # Populates array with diagonal contents as strings
     diag_temp = []
-    3.times do |i|
-      diag_temp << self.grid[i][i]
-    end
+    3.times { |i| diag_temp << self.grid[i][i] }
     @diagonals << diag_temp.join
     @diagonals << "#{self.grid[0][2]}#{self.grid[1][1]}#{self.grid[2][0]}"
   end
