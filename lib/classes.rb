@@ -76,18 +76,24 @@ class Board
     options.each_with_index do |e, i|
       idx = [i, e.index(choice)] if e.include?(choice)
     end
-    return make_new_choice(marker) if self.grid[idx[0]][idx[1]] != " "
-    self.grid[idx[0]][idx[1]] = marker
-    Cell.new
+    selected_spot = self.grid[idx[0]][idx[1]]
+    if selected_spot != " " || choice > 9 || choice < 1
+      new_choice = make_new_choice
+      return choose_cell(new_choice, marker)
+    else
+      self.grid[idx[0]][idx[1]] = marker
+      Cell.new
+    end
   end
-
+  
   private
-  def make_new_choice marker, choice = nil
+  def make_new_choice
     puts "Please select another space"
+    choice = gets.chomp.to_i
     until choice > 0 && choice <= 9 
       choice = gets.chomp.to_i
     end
-    choose_cell(choice, marker)
+    choice
   end
 
   def get_board
