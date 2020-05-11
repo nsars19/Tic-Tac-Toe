@@ -61,11 +61,21 @@ describe "Board" do
         game.choose_cell(number, 'X')
       end
     end
+
+    it "increments Cell::count by 1" do
+      expect { game.choose_cell(1, 'X') }.to change { Cell.count }.by(1)
+    end
   end
 end
 
 describe "Cell" do
-  xit "@count is 0 with no moves made" do
-    expect(Cell.count).to eql 0
+  it "@count is 0 with no moves made" do
+    cell = class_double("Cell")
+    allow(cell).to receive_messages(:count => 0)
+    expect(cell.count).to eql 0
+  end
+
+  it "increments @count with each move" do
+    expect { Cell.new }.to change { Cell.count }.by(1)
   end
 end
