@@ -82,9 +82,8 @@ class Board
   end
 
   private
-  def make_new_choice marker
-    puts "Please select a spot that hasn't been chosen"
-    choice = gets.chomp.to_i
+  def make_new_choice marker, choice = nil
+    puts "Please select another space"
     until choice > 0 && choice <= 9 
       choice = gets.chomp.to_i
     end
