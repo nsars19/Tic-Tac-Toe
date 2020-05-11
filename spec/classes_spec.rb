@@ -44,13 +44,15 @@ describe "Board" do
   end
 
   describe "#choose_cell" do
-    it "does change from ' ' to 'X' or 'O'" do
-      expect { game.choose_cell(3, 'X') }.to change { game.grid[0][2] }.from(' ').to('X')
-    end
+    ['X', 'O'].each do |x_or_o|
+      it "does change from ' ' to #{x_or_o}" do
+        expect { game.choose_cell(3, x_or_o) }.to change { game.grid[0][2] }.from(' ').to(x_or_o)
+      end
 
-    xit "does not allow a previously chosen space to be selected" do
-      game.grid[0][0] = 'X'
-      expect { game.choose_cell(1, 'O') }.not_to change { game.grid[0][0] }
+      it "does not allow a previously chosen space to be selected" do
+        game.grid[0][0] = 'X'
+        expect { game.choose_cell(1, x_or_o) }.not_to change { game.grid[0][0] }
+      end
     end
 
     [10, -5].each do |number|
